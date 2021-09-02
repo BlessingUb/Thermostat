@@ -1,8 +1,8 @@
-describe('themoStat', function() {
+describe('thermoStat', function() {
   let thermostat;
 
   beforeEach(() => {
-    thermostat = new thermoStat
+    thermostat = new thermoStat;
   })
   it('starts with a temperature of 20', function() {
     expect(thermostat.currentTemp).toEqual(20)
@@ -53,5 +53,30 @@ describe('themoStat', function() {
     thermostat.resetTemp()
     expect(thermostat.currentTemp).toEqual(thermoStat.START_TEMPERATURE)
   })
-    
+describe('confirms energy usage', () => { 
+  it('checks if the usage is low', () => {
+    for (i = 0; i < 3; i++) {
+      thermostat.down()
+    }
+    expect(thermostat.energyUsage()).toEqual('low-usage')
+  
+  })
+
+  it('checks if the usage is medium', () =>{
+    expect(thermostat.energyUsage()).toEqual('medium-usage')
+  
+  })
+
+  it('checks if the usage is high', () =>{
+    thermostat.switchPowerSaveOff()
+    for (i = 0; i < 6; i++) {
+      thermostat.up()
+    }
+    expect(thermostat.energyUsage()).toEqual('high-usage')
+  
+  })
+}) 
 });
+
+
+
