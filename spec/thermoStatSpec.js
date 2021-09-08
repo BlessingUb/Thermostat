@@ -48,11 +48,17 @@ describe('thermoStat', function() {
     expect(thermostat.powersave).toBe(false)
   })
 
+  it('has pwer save on on default and can turn power save on after it turn off', () => {
+    thermostat.switchPowerSaveOn()
+    expect(thermostat.powersave).toBe(true)
+  })
+
   it('can reset  to start temperature with reset()', () => {
     thermostat.currentTemp = 22
     thermostat.resetTemp()
     expect(thermostat.currentTemp).toEqual(thermoStat.START_TEMPERATURE)
   })
+  
 describe('confirms energy usage', () => { 
   it('checks if the usage is low', () => {
     for (i = 0; i < 3; i++) {

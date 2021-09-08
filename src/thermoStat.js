@@ -10,26 +10,30 @@ class thermoStat {
 
   up() {
     if (this.powersave && this.currentTemp < thermoStat.POWER_SAVE_MAX_TEMP) {
-      this.currentTemp++
+      return this.currentTemp++
     }
     else if (!this.powersave && this.currentTemp < thermoStat.MAX_TEMP) {
-      this.currentTemp++
+      return this.currentTemp++
     }
 
   }
 
   down() {
     if (this.currentTemp > this.minimumTemp) {
-      this.currentTemp--
+      return this.currentTemp--
     }
   }
   
   switchPowerSaveOff() { 
-    this.powersave = false
+    return this.powersave = false
+  }
+
+  switchPowerSaveOn() { 
+    return this.powersave = true
   }
 
   resetTemp() { 
-    this.currentTemp = thermoStat.START_TEMPERATURE
+    return this.currentTemp = thermoStat.START_TEMPERATURE
   }
   
   energyUsage() { 
